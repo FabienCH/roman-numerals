@@ -1,10 +1,15 @@
 export class RomanNumeralsConverter {
   private readonly one = 'I';
   private readonly five = 'V';
+  private readonly ten = 'X';
 
   public convertToRoman(number: number): string {
     if (number === 4) {
       return `${this.one}${this.five}`;
+    }
+
+    if (number === 9) {
+      return `${this.one}${this.ten}`;
     }
 
     if (number / 5 >= 1) {

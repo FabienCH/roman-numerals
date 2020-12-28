@@ -31,4 +31,7 @@ describe('convertToRoman', () => {
   it('should convert 8 to "VIII"', () => {
     expect(romanNumeralsConverter.convertToRoman(8)).toEqual('VIII');
   });
+  it('should convert 9 to "IX"', () => {
+    expect(romanNumeralsConverter.convertToRoman(9)).toEqual('IX');
+  });
 });
