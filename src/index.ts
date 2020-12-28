@@ -16,6 +16,10 @@ export class RomanNumeralsConverter {
       return `${this.one}${this.getSuffixedNumber(isMoreThanFour)}`;
     }
 
+    if (number > 9) {
+      return `${this.ten}${this.convertFromOneToFour(divByFiveRemainder)}`;
+    }
+
     if (isMoreThanFour) {
       return `${this.five}${this.convertFromOneToFour(divByFiveRemainder)}`;
     }
