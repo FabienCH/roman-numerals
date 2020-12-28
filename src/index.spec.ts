@@ -13,4 +13,8 @@ describe('convertToRoman', () => {
   it('should convert 5 to "V"', () => {
     expect(convertToRoman(5)).toEqual('V');
   });
+
+  it('should convert 6 to "VI"', () => {
+    expect(convertToRoman(6)).toEqual('VI');
+  });
 });

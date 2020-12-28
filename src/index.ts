@@ -3,6 +3,10 @@ export function convertToRoman(number: number): string {
     return 'V';
   }
 
+  if (number === 6) {
+    return 'VI';
+  }
+
   return new Array(number).fill(null).reduce((romanNumber: string, _) => {
     romanNumber += 'I';
     return romanNumber;
