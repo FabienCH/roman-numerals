@@ -7,21 +7,14 @@ export class RomanNumeralsConverter {
     const divByFiveRemainder = number % 5;
     const isPrepended = divByFiveRemainder === 4;
     const isMoreThanFour = number > 4;
-
-    if (number === 10) {
-      return `${this.ten}`;
-    }
+    const isSuffixed = isMoreThanFour && divByFiveRemainder < 4;
 
     if (isPrepended) {
       return `${this.one}${this.getSuffixedNumber(isMoreThanFour)}`;
     }
 
-    if (number > 9) {
-      return `${this.ten}${this.convertFromOneToFour(divByFiveRemainder)}`;
-    }
-
-    if (isMoreThanFour) {
-      return `${this.five}${this.convertFromOneToFour(divByFiveRemainder)}`;
+    if (isSuffixed) {
+      return `${this.getPrependedNumber(number < 10)}${this.convertFromOneToFour(divByFiveRemainder)}`;
     }
 
     return this.convertFromOneToFour(number);
@@ -29,6 +22,10 @@ export class RomanNumeralsConverter {
 
   private getSuffixedNumber(isMoreThanFour: boolean) {
     return isMoreThanFour ? this.ten : this.five;
+  }
+
+  private getPrependedNumber(isLessThanTen: boolean) {
+    return isLessThanTen ? this.five : this.ten;
   }
 
   private convertFromOneToFour(number: number): string {
