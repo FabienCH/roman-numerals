@@ -3,6 +3,10 @@ export class RomanNumeralsConverter {
   private readonly five = 'V';
 
   public convertToRoman(number: number): string {
+    if (number === 4) {
+      return `${this.one}${this.five}`;
+    }
+
     if (number / 5 >= 1) {
       const remainder = number % 5;
       return `${this.five}${this.convertFromOneToFour(remainder)}`;

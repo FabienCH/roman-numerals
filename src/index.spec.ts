@@ -15,6 +15,9 @@ describe('convertToRoman', () => {
   it('should convert 3 to "III"', () => {
     expect(romanNumeralsConverter.convertToRoman(3)).toEqual('III');
   });
+  it('should convert 4 to "IV"', () => {
+    expect(romanNumeralsConverter.convertToRoman(4)).toEqual('IV');
+  });
   it('should convert 5 to "V"', () => {
     expect(romanNumeralsConverter.convertToRoman(5)).toEqual('V');
   });
