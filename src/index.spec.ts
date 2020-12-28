@@ -10,4 +10,7 @@ describe('convertToRoman', () => {
   it('should convert 3 to "III"', () => {
     expect(convertToRoman(3)).toEqual('III');
   });
+  it('should convert 5 to "V"', () => {
+    expect(convertToRoman(5)).toEqual('V');
+  });
 });
