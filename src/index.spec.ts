@@ -1,7 +1,5 @@
-import { helloWorld } from './index';
-
-describe('helloWorld', () => {
-  it('should return Hello World', () => {
-    expect(helloWorld()).toEqual('Hello World');
+describe('convertToRoman', () => {
+  it('should convert 1 to "I"', () => {
+    expect(convertToRoman(1)).toEqual('I');
   });
 });
