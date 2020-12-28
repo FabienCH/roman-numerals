@@ -22,4 +22,10 @@ describe('convertToRoman', () => {
   it('should convert 6 to "VI"', () => {
     expect(romanNumeralsConverter.convertToRoman(6)).toEqual('VI');
   });
+  it('should convert 7 to "VIII"', () => {
+    expect(romanNumeralsConverter.convertToRoman(7)).toEqual('VII');
+  });
+  it('should convert 8 to "VIII"', () => {
+    expect(romanNumeralsConverter.convertToRoman(8)).toEqual('VIII');
+  });
 });
