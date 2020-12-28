@@ -4,17 +4,14 @@ export class RomanNumeralsConverter {
   private readonly ten = 'X';
 
   public convertToRoman(number: number): string {
-    if (number === 4) {
-      return `${this.one}${this.five}`;
-    }
+    const divByFiveRemainder = number % 5;
 
-    if (number === 9) {
-      return `${this.one}${this.ten}`;
+    if (divByFiveRemainder === 4) {
+      return `${this.one}${number / 5 === 1 ? this.five : this.ten}`;
     }
 
     if (number / 5 >= 1) {
-      const remainder = number % 5;
-      return `${this.five}${this.convertFromOneToFour(remainder)}`;
+      return `${this.five}${this.convertFromOneToFour(divByFiveRemainder)}`;
     }
 
     return this.convertFromOneToFour(number);
