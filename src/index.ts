@@ -5,16 +5,22 @@ export class RomanNumeralsConverter {
 
   public convertToRoman(number: number): string {
     const divByFiveRemainder = number % 5;
+    const isPrepended = divByFiveRemainder === 4;
+    const isMoreThanFour = number > 4;
 
-    if (divByFiveRemainder === 4) {
-      return `${this.one}${number / 5 === 1 ? this.five : this.ten}`;
+    if (isPrepended) {
+      return `${this.one}${this.getSuffixedNumber(isMoreThanFour)}`;
     }
 
-    if (number / 5 >= 1) {
+    if (isMoreThanFour) {
       return `${this.five}${this.convertFromOneToFour(divByFiveRemainder)}`;
     }
 
     return this.convertFromOneToFour(number);
+  }
+
+  private getSuffixedNumber(isMoreThanFour: boolean) {
+    return isMoreThanFour ? this.ten : this.five;
   }
 
   private convertFromOneToFour(number: number): string {
