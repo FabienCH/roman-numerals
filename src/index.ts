@@ -14,9 +14,9 @@ export class RomanNumeralsConverter {
       this.remainder -= 39;
     }
 
-    if (this.remainder >= 50) {
+    while (this.remainder >= 50) {
       this.romanValue += this.fifty;
-      this.remainder = this.remainder % 50;
+      this.remainder -= 50;
     }
 
     if (this.remainder === 9) {
@@ -24,15 +24,15 @@ export class RomanNumeralsConverter {
       this.remainder -= 9;
     }
 
-    if (this.remainder >= 10) {
-      const divByTen = this.remainder / 10;
-      this.romanValue += this.repeatSymbolOneToThreeTimes(Math.trunc(divByTen), this.ten);
-      this.remainder = this.remainder % 10;
+    while (this.remainder >= 10) {
+      this.romanValue += this.ten;
+      this.remainder -= 10;
     }
 
     if (this.remainder === 4) {
       const romanValue = this.romanValue ? this.romanValue : this.five;
       this.romanValue += `${this.one}${romanValue}`;
+      this.remainder -= 4;
     }
 
     if (this.remainder >= 5) {
@@ -40,17 +40,11 @@ export class RomanNumeralsConverter {
       this.remainder = this.remainder % 5;
     }
 
-    if (this.remainder <= 3) {
-      this.romanValue += this.repeatSymbolOneToThreeTimes(this.remainder, this.one);
+    while (this.remainder >= 1) {
+      this.romanValue += this.one;
+      this.remainder -= 1;
     }
 
     return this.romanValue;
-  }
-
-  private repeatSymbolOneToThreeTimes(numberOfTimes: number, symbol: string): string {
-    return new Array(numberOfTimes).fill(null).reduce((romanNumber: string, _) => {
-      romanNumber += symbol;
-      return romanNumber;
-    }, '');
   }
 }
