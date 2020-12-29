@@ -10,6 +10,10 @@ export class RomanNumeralsConverter {
     const isMoreThanFour = number > 4;
     const isSuffixed = isMoreThanFour && divByFiveRemainder < 4;
 
+    if (number === 21) {
+      return `${this.repeatSymbolOneToThreeTimes(Math.trunc(divByTen), this.ten)}${this.one}`;
+    }
+
     if (number === 20) {
       return this.repeatSymbolOneToThreeTimes(divByTen, this.ten);
     }
