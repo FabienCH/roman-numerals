@@ -12,30 +12,26 @@ export class RomanNumeralsConverter {
     while (this.remainder >= 50) {
       this.romanValue += this.fifty;
       this.remainder -= 50;
-      this.prependNumber(9, this.ten);
-      this.prependNumber(4, this.five);
+      this.prependNumber(9, this.one, this.ten);
+      this.prependNumber(4, this.one, this.five);
     }
 
-    if (this.remainder === 40) {
-      this.romanValue += `${this.ten}${this.fifty}`;
-      this.remainder -= 40;
-    }
-
-    this.prependNumber(9, this.ten);
+    this.prependNumber(40, this.ten, this.fifty);
+    this.prependNumber(9, this.one, this.ten);
 
     while (this.remainder >= 10) {
       this.romanValue += this.ten;
       this.remainder -= 10;
-      this.prependNumber(9, this.ten);
-      this.prependNumber(4, this.five);
+      this.prependNumber(9, this.one, this.ten);
+      this.prependNumber(4, this.one, this.five);
     }
 
-    this.prependNumber(4, this.five);
+    this.prependNumber(4, this.one, this.five);
 
     if (this.remainder >= 5) {
       this.romanValue += this.five;
       this.remainder = this.remainder % 5;
-      this.prependNumber(4, this.five);
+      this.prependNumber(4, this.one, this.five);
     }
 
     while (this.remainder >= 1) {
@@ -46,9 +42,9 @@ export class RomanNumeralsConverter {
     return this.romanValue;
   }
 
-  private prependNumber(number: number, suffix: string): void {
+  private prependNumber(number: number, prefix: string, suffix: string): void {
     if (this.remainder === number) {
-      this.romanValue += `${this.one}${suffix}`;
+      this.romanValue += `${prefix}${suffix}`;
       this.remainder -= number;
     }
   }
