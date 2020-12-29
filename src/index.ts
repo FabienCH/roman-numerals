@@ -16,6 +16,11 @@ export class RomanNumeralsConverter {
       this.prependNumber(4, this.five);
     }
 
+    if (this.remainder === 40) {
+      this.romanValue += `${this.ten}${this.fifty}`;
+      this.remainder -= 40;
+    }
+
     this.prependNumber(9, this.ten);
 
     while (this.remainder >= 10) {
