@@ -31,8 +31,7 @@ export class RomanNumeralsConverter {
     }
 
     if (this.remainder >= 5) {
-      const divByTen = this.remainder / 5;
-      this.romanValue += this.repeatSymbolOneToThreeTimes(Math.trunc(divByTen), this.five);
+      this.romanValue += this.five;
       this.remainder = this.remainder % 5;
     }
 
