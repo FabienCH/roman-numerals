@@ -15,6 +15,7 @@ export class RomanNumeralsConverter {
     this.remainder = number;
 
     this.setRomanValueWith(this.thousand);
+    this.prependNumber(900, this.hundred.symbol, this.thousand.symbol);
 
     this.setRomanValueWith(this.fiveHundred);
     this.prependNumber(400, this.hundred.symbol, this.fiveHundred.symbol);

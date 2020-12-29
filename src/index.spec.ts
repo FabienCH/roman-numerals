@@ -31,6 +31,7 @@ describe('convertToRoman', () => {
     { number: 100, expectedRomanNumber: 'C' },
     { number: 400, expectedRomanNumber: 'CD' },
     { number: 500, expectedRomanNumber: 'D' },
+    { number: 900, expectedRomanNumber: 'CM' },
     { number: 1000, expectedRomanNumber: 'M' },
   ].forEach(({ number, expectedRomanNumber }) => {
     it(`should convert ${number} to "${expectedRomanNumber}"`, () => {
