@@ -19,6 +19,7 @@ describe('convertToRoman', () => {
     { number: 9, expectedRomanNumber: 'IX' },
     { number: 10, expectedRomanNumber: 'X' },
     { number: 11, expectedRomanNumber: 'XI' },
+    { number: 11, expectedRomanNumber: 'XV' },
   ].forEach(({ number, expectedRomanNumber }) => {
     it(`should convert ${number} to "${expectedRomanNumber}"`, () => {
       expect(romanNumeralsConverter.convertToRoman(number)).toEqual(expectedRomanNumber);

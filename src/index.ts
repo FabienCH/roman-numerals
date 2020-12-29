@@ -14,7 +14,8 @@ export class RomanNumeralsConverter {
     }
 
     if (isSuffixed) {
-      return `${this.getPrependedNumber(number < 10)}${this.convertFromOneToFour(divByFiveRemainder)}`;
+      const suffix = number - 10 > 4 ? this.five : this.convertFromOneToFour(divByFiveRemainder);
+      return `${this.getPrependedNumber(number < 10)}${suffix}`;
     }
 
     return this.convertFromOneToFour(number);
