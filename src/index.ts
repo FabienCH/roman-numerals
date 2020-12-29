@@ -7,11 +7,14 @@ export class RomanNumeralsConverter {
   private readonly fifty: RomanNumeral = { number: 50, symbol: 'L' };
   private readonly hundred: RomanNumeral = { number: 100, symbol: 'C' };
   private readonly fiveHundred: RomanNumeral = { number: 500, symbol: 'D' };
+  private readonly thousand: RomanNumeral = { number: 1000, symbol: 'M' };
   private romanValue = '';
   private remainder: number;
 
   public convertToRoman(number: number): string {
     this.remainder = number;
+
+    this.setRomanValueWith(this.thousand);
 
     this.setRomanValueWith(this.fiveHundred);
     this.prependNumber(400, this.hundred.symbol, this.fiveHundred.symbol);
