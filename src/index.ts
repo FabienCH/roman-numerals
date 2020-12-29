@@ -9,6 +9,10 @@ export class RomanNumeralsConverter {
     const isMoreThanFour = number > 4;
     const isSuffixed = isMoreThanFour && divByFiveRemainder < 4;
 
+    if (number === 20) {
+      return 'XX';
+    }
+
     if (isPrepended) {
       return `${this.one}${this.getSuffixedNumber(isMoreThanFour)}`;
     }
