@@ -2,11 +2,17 @@ export class RomanNumeralsConverter {
   private readonly one = 'I';
   private readonly five = 'V';
   private readonly ten = 'X';
+  private readonly fifty = 'L';
   private romanValue = '';
   private remainder: number;
 
   public convertToRoman(number: number): string {
     this.remainder = number;
+
+    if (this.remainder >= 50) {
+      this.romanValue += this.fifty;
+      this.remainder = this.remainder % 50;
+    }
 
     if (this.remainder === 9) {
       this.romanValue += `${this.one}${this.ten}`;
