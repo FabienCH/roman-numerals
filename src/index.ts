@@ -2,32 +2,37 @@ export class RomanNumeralsConverter {
   private readonly one = 'I';
   private readonly five = 'V';
   private readonly ten = 'X';
+  private romanValue = '';
+  private remainder: number;
 
   public convertToRoman(number: number): string {
-    const divByTen = number / 10;
-    const divByFiveRemainder = number % 5;
+    this.remainder = number;
+
+    if (number >= 10) {
+      const divByTen = number / 10;
+      this.romanValue += this.repeatSymbolOneToThreeTimes(Math.trunc(divByTen), this.ten);
+      this.remainder = number % 10;
+    }
+
+    const divByFiveRemainder = this.remainder % 5;
     const isPrepended = divByFiveRemainder === 4;
-    const isMoreThanFour = number > 4;
+    const isMoreThanFour = this.remainder > 4;
     const isSuffixed = isMoreThanFour && divByFiveRemainder < 4;
 
-    if (number === 21) {
-      return `${this.repeatSymbolOneToThreeTimes(Math.trunc(divByTen), this.ten)}${this.one}`;
-    }
-
-    if (number === 20) {
-      return this.repeatSymbolOneToThreeTimes(divByTen, this.ten);
-    }
-
     if (isPrepended) {
-      return `${this.one}${this.getSuffixedNumber(isMoreThanFour)}`;
+      this.romanValue += `${this.one}${this.getSuffixedNumber(isMoreThanFour)}`;
     }
 
     if (isSuffixed) {
-      const suffix = number - 10 > 4 ? this.five : this.repeatSymbolOneToThreeTimes(divByFiveRemainder, this.one);
-      return `${this.getPrependedNumber(number < 10)}${suffix}`;
+      const suffix = this.remainder - 10 > 4 ? this.five : this.repeatSymbolOneToThreeTimes(divByFiveRemainder, this.one);
+      this.romanValue += `${this.getPrependedNumber(this.remainder < 10)}${suffix}`;
     }
 
-    return this.repeatSymbolOneToThreeTimes(number, this.one);
+    if (this.remainder <= 3) {
+      this.romanValue += this.repeatSymbolOneToThreeTimes(this.remainder, this.one);
+    }
+
+    return this.romanValue;
   }
 
   private getSuffixedNumber(isMoreThanFour: boolean) {
