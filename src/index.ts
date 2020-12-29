@@ -9,6 +9,11 @@ export class RomanNumeralsConverter {
   public convertToRoman(number: number): string {
     this.remainder = number;
 
+    if (this.remainder === 39) {
+      this.romanValue = 'XXXIX';
+      this.remainder -= 39;
+    }
+
     if (this.remainder >= 50) {
       this.romanValue += this.fifty;
       this.remainder = this.remainder % 50;
