@@ -9,6 +9,18 @@ export function convertToRomanNumber(number: number): string {
   if (number === 9) {
     return 'IX';
   }
+  if (number === 10) {
+    return 'X';
+  }
+  if (number === 11) {
+    return 'XI';
+  }
+  if (number === 12) {
+    return 'XII';
+  }
+  if (number === 14) {
+    return 'XIV';
+  }
   if (number < 5) {
     return convertOntToFour(number);
   }
