@@ -3,6 +3,12 @@ function convertOntToFour(number: number): string {
 }
 
 export function convertToRomanNumber(number: number): string {
+  if (number === 4) {
+    return 'IV';
+  }
+  if (number === 9) {
+    return 'IX';
+  }
   if (number < 5) {
     return convertOntToFour(number);
   }
