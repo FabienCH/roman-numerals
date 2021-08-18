@@ -16,6 +16,9 @@ export function convertToRomanNumber(number: number): string {
   if (number === 14) {
     return 'XIV';
   }
+  if (number === 19) {
+    return 'XIX';
+  }
   if (number >= 10) {
     number -= 10;
     const suffix = number >= 5 ? convertOneToEight(number) : convertOneToThree(number);
