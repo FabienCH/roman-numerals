@@ -2,6 +2,10 @@ function convertOneToThree(number: number): string {
   return Array.from({ length: number }, (_, i) => i).reduce((romanNumber) => (romanNumber += 'I'), '');
 }
 
+function convertOneToEight(number: number): string {
+  return `V${convertOneToThree(number - 5)}`;
+}
+
 export function convertToRomanNumber(number: number): string {
   if (number === 4) {
     return 'IV';
@@ -14,15 +18,11 @@ export function convertToRomanNumber(number: number): string {
   }
   if (number >= 10) {
     number -= 10;
-    if (number >= 5) {
-      number -= 5;
-      return `XV${convertOneToThree(number)}`;
-    }
-    return `X${convertOneToThree(number)}`;
+    const suffix = number >= 5 ? convertOneToEight(number) : convertOneToThree(number);
+    return `X${suffix}`;
   }
   if (number >= 5) {
-    number -= 5;
-    return `V${convertOneToThree(number)}`;
+    return convertOneToEight(number);
   }
   return convertOneToThree(number);
 }
