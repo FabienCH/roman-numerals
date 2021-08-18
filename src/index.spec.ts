@@ -15,6 +15,7 @@ describe('convertToRomanNumber', () => {
     { input: 11, expected: 'XI' },
     { input: 12, expected: 'XII' },
     { input: 14, expected: 'XIV' },
+    { input: 15, expected: 'XV' },
   ];
 
   testParams.forEach((param) => {

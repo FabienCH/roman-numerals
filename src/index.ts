@@ -14,6 +14,10 @@ export function convertToRomanNumber(number: number): string {
   }
   if (number >= 10) {
     number -= 10;
+    if (number >= 5) {
+      number -= 5;
+      return `XV${convertOneToThree(number)}`;
+    }
     return `X${convertOneToThree(number)}`;
   }
   if (number >= 5) {
